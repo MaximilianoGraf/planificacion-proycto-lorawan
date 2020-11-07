@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Nodo LoRaWAN Multipropósito} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -11,18 +11,18 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nombre del Autor} 
+\autor{Maximiliano Graf} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Nombre del Director}
-\pertenenciaDirector{pertenencia} 
+\director{Julieta Llanes}
+\pertenenciaDirector{INVAP S.E.} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Javier Cerrada}
+\empresaCliente{INVAP S.E.}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -32,9 +32,9 @@
 \juradoTres{Nombre y Apellido (3)}
 \pertenenciaJurTres{pertenencia (3)}
  
-\fechaINICIO{22 de junio de 2020}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlanificacion{22 de Agosto de 2020} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{22 de diciembre de 2020}		%Fecha de defensa pública del trabajo final
+\fechaINICIO{23 de octubre de 2020}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlanificacion{11 de diciembre de 2020} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{22 de septiembre de 2021}		%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -62,12 +62,8 @@
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-1.0      & Creación del documento                                          & 27/06/2020 \\ \hline
-1.1      &                                                                 & dd/mm/aaaa \\ \hline
-1.2      & Otro ejemplo \newline
-		   Con texto partido \newline
-		   En varias líneas \newline
-		   A propósito                                                     & dd/mm/aaaa \\ \hline
+1.0      & Creación del documento                                          & 30/11/2020 \\ \hline
+
 \end{tabularx}
 \end{table}
 
@@ -79,12 +75,12 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 \label{sec:acta}
 
 \begin{flushright}
-Buenos Aires, \fechaInicioName
+San Carlos de Bariloche, \fechaInicioName
 \end{flushright}
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo preliminar de un sistema de control de temperatura de un calefón, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo de nodo LoRaWAN que implementará un SW sobre un RTOS multiplataforma, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -107,54 +103,28 @@ Se adjunta a esta acta la planificación inicial.
 \section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red}
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+El mundo de las tencologías IoT se encuentra en pleno desarrollo, desde la empresa del cliente se ha demostrado interés para contar con herramientas que permitan realizar diversos análisis de proyectos IoT como por ejemplo: tiempos de desarrollo, análisis de costos, caractarísticas de las comunicaciones, consumo eléctrico, etc.
+LoRa es una tecnología inalámbrica del tipo LPWAN (Low-Power Wide Area Network) que se caracteriza por su gran alcance y su bajo consumo eléctrico. Dentro de INVAP se ha realizado un proyecto utilizando LoRa hace algunos años y surgieron algunos problemas que en esos momentos eran difíciles de resolver. 
+El presente proyecto tiene como objetivo construir un prototipo que resuelva los problemas hallados anteriormente y sirva como base para futuros desarrollos IoT.
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
-
-\begin{itemize}
-\item ¿Cómo se vincula este proyecto con la misión de la organización?
-\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-\item ¿Cuales son las necesidades que debe satisfacer?
-\item ¿Por dónde pasa la innovación?
-\end{itemize}
-
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema }y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+En la Figura \ref{fig:arqLorawan} se puede ver como interactúa un nodo LoRaWAN con el entorno. Los nodos administran uno o varios sensores y reportan los datos hacia uno o varios gateways, éstos a su vez hacen de interfaz de salida hacia la red WAN y así la información recolectada en el nodo puede llegar hasta una aplicación que haga uso de esos datos en el otro extremo de la red.
 
 \vspace{25px}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.7\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema}
-\label{fig:diagBloques}
+\includegraphics[width=.8\textwidth]{./Figuras/nodoLoraWan.png}
+\caption{Arquitectura de red LoRaWAN}
+\label{fig:arqLorawan}
 \end{figure}
 
 \vspace{25px}
 
-El tamaño de la tipografía en la figura debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama.
-\end{consigna}
+
 
 
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
-
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
 
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
@@ -163,112 +133,75 @@ Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por e
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+Cliente       & \clientename      &\empclientename	& -      	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+Usuario final & Equipo de desarrollo de SW &INVAP S.E. & -        	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Sería deseable listar a continuación de la tabla las principales características de cada interesado.
- 
-Por ejemplo:
 \begin{itemize}
-\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-\item Orientador: María Gómez, nos va a poder ayudar mucho con la gestión de impuestos.
+\item Cliente: es riguroso y exigente con la arquitecuta a desarrollar. Se recomienda hacer varias interconsultas para formalizar avances.
+\item Orientador: Julieta Llanes, dispone de muy poco tiempo, usar las reuniones de manera eficiente.
 \end{itemize}
-
-\end{consigna}
 
 
 
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
-\end{consigna}
+El propósito de este proyecto es solucionar los problemas hallados anteriormente en desarrollos similares y brindar al cliente un prototipo que permita futuros desarrollos IoT. Por otra parte tiene como objetivo personal adquirir los conocimientos necesarios para elaborar proyectos de IoT por cuenta propia.
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+El presente proyecto incluye: 
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
+\begin{itemize}
+\item Análisis y selección de RTOS.
+\item Desarrollo de SW en el nodo.
+\item Desarrollo de visualizador de datos simple.
+\item Armado de banco de pruebas.
+\item Demostración de nodo funcional.
+\end{itemize}
 
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
-
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna}
-
+El presente proyecto no incluye: 
+\begin{itemize}
+\item Desarrollo de HW.
+\item Pruebas de campo.
+\end{itemize}
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
+Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
-\item Supuesto 1
-\item Supuesto 2...
+\item El HW de desarrollo será provisto por el cliente.
+\item El tiempo del desarrollo debe ser de aproximadamente 600hs.
+\item Se contará con soporte técnico por parte de los directores.
 \end{itemize}
-
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-\end{consigna}
 
 \section{4. Requerimientos}
 \label{sec:requerimientos}
 
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible agruparlos por afinidad:
-
 \begin{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Requerimientos SW del nodo
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2
-	\item Requerimiento 3 (prioridad menor)
+	\item RN-001 Debe implementarse sobre un RTOS.
+	\item RN-002 Debe permitir la administración de 1 a 4 sensores en simultáneo.
+	\item RN-003 Debe transmitir los datos recolectados de los sensores mediante un modem LoRa hacia un gateway.
+	\item RN-004 Debe recibir comandos desde el gateway.
+	\item RM-005 Debe poseer una arquitectura multiplataforma.
+	\item RM-006 Debe poder ejecutarse en al menos 2 plataformas de HW diferentes.
 	\end{enumerate}
-\item Grupo de requerimientos asociados con...
+\item Requerimientos de la aplicación de usuario
 	\begin{enumerate}
-	\item Requerimiento 1
-	\item Requerimiento 2 (prioridad menor)
+	\item RA-001 Debe recibir los mensajes provenientes del gateway.
+	\item RA-002 Debe permitir el envío de comandos hacia el nodo.
+	\item RA-003 Debe permitir la visualización de los mensajes recibidos.
 	\end{enumerate}
 \end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-De ser posible indicar cómo se obtuvieron cada uno de los requerimientos 
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-\item Ser breve y conciso (nadie lee cosas largas). 
-\item Ser específico: no dejar lugar a confusiones.
-\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
 
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
@@ -280,53 +213,63 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-Cosas como: 
 \begin{itemize}
-\item Manual de uso
-\item Diagrama esquemático
-\item Código fuente
-\item Diagrama de instalación
-\item Informe final
+\item Documento de Arquitectura de SW.
+\item Instructivo de armado de banco de pruebas.
+\item Documento de instalación de ambiente de desarrollo de SW.
+\item Documento de análisis de RTOS.
 
 \end{itemize}
 
-\end{consigna}
 
 \section{6. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Introducción
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Obtener información acerca de proyectos similares en la empresa y buscar referentes (12 hs)
+	\item Gestionar envíos y compras de elementos necesarios (10 hs)
+	\item Analizar documentación de las plataformas de HW a utilizar (40 hs)
+	\item Obtener requerimientos iniciales (10 hs)
+	\item Armado de banco de pruebas (24hs)
+	\item Obtener información acerca de testing en sistemas embebidos (24hs)
+	\item Inducción a tecnologías LoRaWAN (24hs)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Análisis RTOS
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Estado del arte RTOS en IoT (24 hs)
+	\item Análisis de arquitecturas multiplataforma en dispositivos IoT (40 hs)
 	\end{enumerate}
-	\item Grupo de tareas 3
+\item Selección de RTOS
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
+	\item Instalación de SDK (24 hs)
+	\item Diseño e implementación de pruebas de performance (40 hs)
+	\item Ejecución de pruebas en 3 plataformas y análisis de resultados (30 hs)
+	\end{enumerate}	
+\item SW nodo
+	\begin{enumerate}
+	\item Diseño (40 hs)
+	\item Implementación (40hs)
+	\item Testing (40hs)
+	\end{enumerate}
+\item Integración
+	\begin{enumerate}
+	\item Configuración gateway (8 hs)
+	\item Implementación aplicación de usuario(30hs)
+	\item Testing y pruebas end to end (30hs)
+	\end{enumerate}
+\item Gestión del proyecto
+	\begin{enumerate}
+	\item Reuniones de control y seguimiento del proyecto (24 hs)
+	\item Elaboración de documentos entregables al cliente (40 hs)
+	\item Elaboración de Memorias del proyecto (40 hs)
+	\item Elaboración de presentación final del proyecto (30 hs)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
+Cantidad total de horas: (624 hs)
 
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
-
-\end{consigna}
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
