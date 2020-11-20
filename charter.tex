@@ -11,17 +11,17 @@
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Maximiliano Graf} 
+\autor{Ing. Maximiliano Graf} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Julieta Llanes}
+\director{Ing. Julieta Llanes}
 \pertenenciaDirector{INVAP S.E.} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
 \codirector{} % si queda vacio no se deberíá incluir 
 \pertenenciaCoDirector{}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Javier Cerrada}
+\cliente{Ing. Javier Cerrada}
 \empresaCliente{INVAP S.E.}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
@@ -62,7 +62,8 @@
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-1.0      & Creación del documento                                          & 30/11/2020 \\ \hline
+1.0      & Creación del documento                                          & 07/11/2020 \\ \hline
+1.1      & Actualización de requerimientos y correcciones en las secciones 1 a 6. Se agregan historias de usuario. & 15/11/2020 \\ \hline
 
 \end{tabularx}
 \end{table}
@@ -80,7 +81,7 @@ San Carlos de Bariloche, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el prototipo de nodo LoRaWAN que implementará un SW sobre un RTOS multiplataforma, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la construcción de un prototipo de nodo LoRaWAN que implementará un software para administrar diversos sensores. Tendrá un presupuesto preliminar estimado de 614 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -103,17 +104,17 @@ Se adjunta a esta acta la planificación inicial.
 \section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-El mundo de las tencologías IoT se encuentra en pleno desarrollo, desde la empresa del cliente se ha demostrado interés para contar con herramientas que permitan realizar diversos análisis de proyectos IoT como por ejemplo: tiempos de desarrollo, análisis de costos, caractarísticas de las comunicaciones, consumo eléctrico, etc.
-LoRa es una tecnología inalámbrica del tipo LPWAN (Low-Power Wide Area Network) que se caracteriza por su gran alcance y su bajo consumo eléctrico. Dentro de INVAP se ha realizado un proyecto utilizando LoRa hace algunos años y surgieron algunos problemas que en esos momentos eran difíciles de resolver. 
+Debido a que el mundo de las tencologías IoT se encuentra en pleno desarrollo, desde la empresa del cliente se ha demostrado interés para contar con herramientas que permitan realizar diversos análisis de proyectos IoT como por ejemplo: tiempos de desarrollo, análisis de costos, caractarísticas de las comunicaciones, consumo eléctrico, etc.
+LoRa es una tecnología inalámbrica del tipo LPWAN (Low-Power Wide Area Network) que se caracteriza por su gran alcance y su bajo consumo eléctrico. Durante 2017 INVAP realizó un proyecto utilizando LoRa, en el cuál se encontraron con diversos problemas que en esos momentos eran difíciles de resolver. 
 El presente proyecto tiene como objetivo construir un prototipo que resuelva los problemas hallados anteriormente y sirva como base para futuros desarrollos IoT.
 
-En la Figura \ref{fig:arqLorawan} se puede ver como interactúa un nodo LoRaWAN con el entorno. Los nodos administran uno o varios sensores y reportan los datos hacia uno o varios gateways, éstos a su vez hacen de interfaz de salida hacia la red WAN y así la información recolectada en el nodo puede llegar hasta una aplicación que haga uso de esos datos en el otro extremo de la red.
+En la Figura \ref{fig:arqLorawan} se puede ver como interactúa un nodo LoRaWAN con el entorno. Los nodos administran uno o varios sensores y reportan los datos hacia uno o varios gateways, estos a su vez hacen de interfaz de salida hacia la red WAN y así la información recolectada en el nodo puede llegar hasta una aplicación que haga uso de esos datos en el otro extremo de la red.
 
 \vspace{25px}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/nodoLoraWan.png}
+\includegraphics[width=16cm, height=8cm]{./Figuras/nodoLoraWan.png}
 \caption{Arquitectura de red LoRaWAN}
 \label{fig:arqLorawan}
 \end{figure}
@@ -150,7 +151,7 @@ Usuario final & Equipo de desarrollo de SW &INVAP S.E. & -        	\\ \hline
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-El propósito de este proyecto es solucionar los problemas hallados anteriormente en desarrollos similares y brindar al cliente un prototipo que permita futuros desarrollos IoT. Por otra parte tiene como objetivo personal adquirir los conocimientos necesarios para elaborar proyectos de IoT por cuenta propia.
+El propósito de este proyecto es solucionar los problemas hallados anteriormente en desarrollos similares y brindar al cliente un prototipo que permita futuros desarrollos IoT. Por otra parte, tiene como objetivo personal adquirir los conocimientos necesarios para elaborar proyectos de IoT por cuenta propia.
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
@@ -162,7 +163,7 @@ El presente proyecto incluye:
 \item Desarrollo de SW en el nodo.
 \item Desarrollo de visualizador de datos simple.
 \item Armado de banco de pruebas.
-\item Demostración de nodo funcional.
+\item Demostración funcional del nodo.
 \end{itemize}
 
 El presente proyecto no incluye: 
@@ -178,7 +179,7 @@ Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
 \item El HW de desarrollo será provisto por el cliente.
-\item El tiempo del desarrollo debe ser de aproximadamente 600hs.
+\item El tiempo del desarrollo debe ser aproximadamente 600 hs.
 \item Se contará con soporte técnico por parte de los directores.
 \end{itemize}
 
@@ -186,35 +187,46 @@ Para el desarrollo del presente proyecto se supone que:
 \label{sec:requerimientos}
 
 \begin{enumerate}
-\item Requerimientos SW del nodo
+\item Software del nodo
 	\begin{enumerate}
 	\item RN-001 Debe implementarse sobre un RTOS.
 	\item RN-002 Debe permitir la administración de 1 a 4 sensores en simultáneo.
-	\item RN-003 Debe transmitir los datos recolectados de los sensores mediante un modem LoRa hacia un gateway.
+	\item RN-003 Debe enviar los datos recolectados de los sensores mediante un modem LoRa hacia un gateway.
 	\item RN-004 Debe recibir comandos desde el gateway.
-	\item RM-005 Debe poseer una arquitectura multiplataforma.
-	\item RM-006 Debe poder ejecutarse en al menos 2 plataformas de HW diferentes.
+	\item RN-005 Debe poseer una arquitectura HAL.
+	\item RN-006 Debe poder ejecutarse en al menos 2 plataformas de HW diferentes.
+	\item RN-007 Se debe utilizar control de versiones en GIT.
+	\item RN-008 Se debe desarrollar un procedimiento de integración continua utilizando las herramientas provistas por la empresa cliente.
+	\item RN-009 Debe poseer una arquitectura en capas.
+	\item RN-010 Debe enviar información de estado.
 	\end{enumerate}
-\item Requerimientos de la aplicación de usuario
+\item Aplicación de usuario
 	\begin{enumerate}
 	\item RA-001 Debe recibir los mensajes provenientes del gateway.
 	\item RA-002 Debe permitir el envío de comandos hacia el nodo.
 	\item RA-003 Debe permitir la visualización de los mensajes recibidos.
+	\end{enumerate}
+\item Documentación
+	\begin{enumerate}
+	\item RD-001 La documentación debe ser generada con las herramientas de gestión de la empresa cliente.
 	\end{enumerate}
 \end{enumerate}
 
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
-\end{consigna}
+\begin{itemize}
+\item Como usuario quiero utilizar diferentes sensores en simultáneo. 5
+\item Como usuario quiero visualizar información de los sensores conectados al nodo de manera remota. 2
+\item Como usuario quiero conocer el estado del nodo de manera remota.        1
+\item Como desarrollador quiero cambiar facilmente la plataforma de hardware. 8
+\end{itemize}
 
 \section{5. Entregables principales del proyecto}
 \label{sec:entregables}
 
 \begin{itemize}
-\item Documento de Arquitectura de SW.
+\item Documento de arquitectura de SW.
 \item Instructivo de armado de banco de pruebas.
 \item Documento de instalación de ambiente de desarrollo de SW.
 \item Documento de análisis de RTOS.
@@ -226,40 +238,37 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 \label{sec:wbs}
 
 \begin{enumerate}
-\item Introducción
+\item Introducción (134 hs)
 	\begin{enumerate}
 	\item Obtener información acerca de proyectos similares en la empresa y buscar referentes (12 hs)
 	\item Gestionar envíos y compras de elementos necesarios (10 hs)
-	\item Analizar documentación de las plataformas de HW a utilizar (40 hs)
+	\item Analizar documentación de las plataformas de HW a utilizar (30 hs)
 	\item Obtener requerimientos iniciales (10 hs)
-	\item Armado de banco de pruebas (24hs)
-	\item Obtener información acerca de testing en sistemas embebidos (24hs)
-	\item Inducción a tecnologías LoRaWAN (24hs)
+	\item Armado de banco de pruebas (24 hs)
+	\item Obtener información acerca de testing en sistemas embebidos (24 hs)
+	\item Inducción a tecnologías LoRaWAN (24 hs)
 	\end{enumerate}
-\item Análisis RTOS
+\item Análisis y Selección de RTOS (158 hs)
 	\begin{enumerate}
 	\item Estado del arte RTOS en IoT (24 hs)
 	\item Análisis de arquitecturas multiplataforma en dispositivos IoT (40 hs)
-	\end{enumerate}
-\item Selección de RTOS
-	\begin{enumerate}
 	\item Instalación de SDK (24 hs)
 	\item Diseño e implementación de pruebas de performance (40 hs)
 	\item Ejecución de pruebas en 3 plataformas y análisis de resultados (30 hs)
 	\end{enumerate}	
-\item SW nodo
+\item SW nodo (120 hs)
 	\begin{enumerate}
 	\item Diseño (40 hs)
-	\item Implementación (40hs)
-	\item Testing (40hs)
+	\item Implementación (40 hs)
+	\item Testing (40 hs)
 	\end{enumerate}
-\item Integración
+\item Integración (68 hs)
 	\begin{enumerate}
 	\item Configuración gateway (8 hs)
-	\item Implementación aplicación de usuario(30hs)
-	\item Testing y pruebas end to end (30hs)
+	\item Implementación aplicación de usuario(30 hs)
+	\item Testing y pruebas end to end (30 hs)
 	\end{enumerate}
-\item Gestión del proyecto
+\item Gestión del proyecto (134 hs)
 	\begin{enumerate}
 	\item Reuniones de control y seguimiento del proyecto (24 hs)
 	\item Elaboración de documentos entregables al cliente (40 hs)
@@ -268,7 +277,7 @@ Descripción: En esta sección se deben incluir las historias de usuarios y su p
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (624 hs)
+Cantidad total de horas: (614 hs)
 
 
 \section{7. Diagrama de Activity On Node}
