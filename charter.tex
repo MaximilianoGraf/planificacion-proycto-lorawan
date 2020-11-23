@@ -64,6 +64,7 @@
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 1.0      & Creación del documento                                          & 07/11/2020 \\ \hline
 1.1      & Actualización de requerimientos y correcciones en las secciones 1 a 6. Se agregan historias de usuario. & 15/11/2020 \\ \hline
+1.2      & Se completa hasta la sección 11 inclusive.                      & 22/11/2020 \\ \hline
 
 \end{tabularx}
 \end{table}
@@ -81,7 +82,7 @@ San Carlos de Bariloche, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la construcción de un prototipo de nodo LoRaWAN que implementará un software para administrar diversos sensores. Tendrá un presupuesto preliminar estimado de 614 hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la construcción de un prototipo de nodo LoRaWAN que implementará un software para administrar diversos sensores. Tendrá un presupuesto preliminar estimado de 642 hs de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -104,7 +105,7 @@ Se adjunta a esta acta la planificación inicial.
 \section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-Debido a que el mundo de las tencologías IoT se encuentra en pleno desarrollo, desde la empresa del cliente se ha demostrado interés para contar con herramientas que permitan realizar diversos análisis de proyectos IoT como por ejemplo: tiempos de desarrollo, análisis de costos, caractarísticas de las comunicaciones, consumo eléctrico, etc.
+Debido a que el mundo de las tencologías IoT se encuentra en pleno desarrollo, desde la empresa del cliente se ha demostrado interés para contar con herramientas que permitan realizar diversos análisis de proyectos IoT como por ejemplo: tiempos de desarrollo, análisis de costos, características de las comunicaciones, consumo eléctrico, etc.
 LoRa es una tecnología inalámbrica del tipo LPWAN (Low-Power Wide Area Network) que se caracteriza por su gran alcance y su bajo consumo eléctrico. Durante 2017 INVAP realizó un proyecto utilizando LoRa, en el cuál se encontraron con diversos problemas que en esos momentos eran difíciles de resolver. 
 El presente proyecto tiene como objetivo construir un prototipo que resuelva los problemas hallados anteriormente y sirva como base para futuros desarrollos IoT.
 
@@ -160,15 +161,16 @@ El presente proyecto incluye:
 
 \begin{itemize}
 \item Análisis y selección de RTOS.
-\item Desarrollo de SW en el nodo.
+\item Desarrollo de software en el nodo.
 \item Desarrollo de visualizador de datos simple.
 \item Armado de banco de pruebas.
+\item Configuración de la red LoRaWAN.
 \item Demostración funcional del nodo.
 \end{itemize}
 
 El presente proyecto no incluye: 
 \begin{itemize}
-\item Desarrollo de HW.
+\item Desarrollo de hardware.
 \item Pruebas de campo.
 \end{itemize}
 
@@ -178,7 +180,7 @@ El presente proyecto no incluye:
 Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
-\item El HW de desarrollo será provisto por el cliente.
+\item Tanto el hardware de desarrollo como el gateway serán provistos por el cliente.
 \item El tiempo del desarrollo debe ser aproximadamente 600 hs.
 \item Se contará con soporte técnico por parte de los directores.
 \end{itemize}
@@ -191,7 +193,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\begin{enumerate}
 	\item RN-001 Debe implementarse sobre un RTOS.
 	\item RN-002 Debe permitir la administración de 1 a 4 sensores en simultáneo.
-	\item RN-003 Debe enviar los datos recolectados de los sensores mediante un modem LoRa hacia un gateway.
+	\item RN-003 Debe enviar los datos recolectados de los sensores mediante un módem LoRa hacia un gateway utilizando un tiempo configurable para cada sensor.
 	\item RN-004 Debe recibir comandos desde el gateway.
 	\item RN-005 Debe poseer una arquitectura HAL.
 	\item RN-006 Debe poder ejecutarse en al menos 2 plataformas de HW diferentes.
@@ -215,11 +217,13 @@ Para el desarrollo del presente proyecto se supone que:
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
+Éstas historias fueron ponderadas según el volumen de trabajo y dificultad que implica satisfacer cada una de ellas utilizando la serie de Fibonacci.
+
 \begin{itemize}
-\item Como usuario quiero utilizar diferentes sensores en simultáneo. 5
-\item Como usuario quiero visualizar información de los sensores conectados al nodo de manera remota. 2
-\item Como usuario quiero conocer el estado del nodo de manera remota.        1
-\item Como desarrollador quiero cambiar facilmente la plataforma de hardware. 8
+\item Como usuario quiero tener la posibilidad de utilizar diferentes sensores en simultáneo para poder medir diferentes propiedades físicas del entorno del nodo. (5)
+\item Como analista de datos quiero visualizar información de los sensores conectados al nodo de manera remota. (3)
+\item Como usuario encargado del mantenimiento del equipo quiero conocer el estado del nodo de manera remota para realizar un diagnóstico con facilidad.        (1)
+\item Como miembro del equipo de desarrollo de software quiero cambiar fácilmente la plataforma de hardware. (8)
 \end{itemize}
 
 \section{5. Entregables principales del proyecto}
@@ -242,8 +246,9 @@ Para el desarrollo del presente proyecto se supone que:
 	\begin{enumerate}
 	\item Obtener información acerca de proyectos similares en la empresa y buscar referentes (12 hs)
 	\item Gestionar envíos y compras de elementos necesarios (10 hs)
-	\item Analizar documentación de las plataformas de HW a utilizar (30 hs)
+	\item Analizar documentación de las plataformas de HW a utilizar (15 hs)
 	\item Obtener requerimientos iniciales (10 hs)
+	\item Planificación del proyecto (15 hs)
 	\item Armado de banco de pruebas (24 hs)
 	\item Obtener información acerca de testing en sistemas embebidos (24 hs)
 	\item Inducción a tecnologías LoRaWAN (24 hs)
@@ -256,139 +261,71 @@ Para el desarrollo del presente proyecto se supone que:
 	\item Diseño e implementación de pruebas de performance (40 hs)
 	\item Ejecución de pruebas en 3 plataformas y análisis de resultados (30 hs)
 	\end{enumerate}	
-\item SW nodo (120 hs)
+\item Software del nodo (120 hs)
 	\begin{enumerate}
 	\item Diseño (40 hs)
 	\item Implementación (40 hs)
 	\item Testing (40 hs)
 	\end{enumerate}
-\item Integración (68 hs)
+\item Integración (78 hs)
 	\begin{enumerate}
 	\item Configuración gateway (8 hs)
-	\item Implementación aplicación de usuario(30 hs)
+	\item Diseño e implementación aplicación de usuario(40 hs)
 	\item Testing y pruebas end to end (30 hs)
 	\end{enumerate}
-\item Gestión del proyecto (134 hs)
+\item Gestión del proyecto (152 hs)
 	\begin{enumerate}
-	\item Reuniones de control y seguimiento del proyecto (24 hs)
-	\item Elaboración de documentos entregables al cliente (40 hs)
+	\item Reuniones de control y seguimiento del proyecto (40 hs)
+	\item Elaboración de documentos para el cliente (40 hs)
 	\item Elaboración de Memorias del proyecto (40 hs)
-	\item Elaboración de presentación final del proyecto (30 hs)
+	\item Elaboración de presentación final del proyecto (32 hs)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (614 hs)
+Cantidad total de horas: (642 hs)
 
 
 \section{7. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
-
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
-
+En la Figura \ref{fig:AoN} se muestra el diagrama de \textit{Activity on Node} del proyecto. La unidad de tiempo está expresada en horas.
+El camino crítico se representa en color naranja.
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
-\caption{Diagrama en \textit{Activity on Node}}
+\includegraphics[width=16cm, height=15cm]{./Figuras/aon.png}
+\caption{Diagrama \textit{Activity on Node}}
 \label{fig:AoN}
 \end{figure}
-
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
 
 
 
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
 
-\begin{consigna}{red}
-Utilizar el software Gantter for Google Drive o alguno similar para dibujar el diagrama de Gantt.
+El diagrama de Gantt del proyecto se presenta en la Figura \ref{fig:Gantt}. En el mismo se pueden apreciar las fechas de inicio y finalización de cada tarea, así como también sus dependencias.
 
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre las cuales destacamos:
-
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
-
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
-
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
+\begin{figure}[htpb]
+\centering 
+\includegraphics[width=16cm, height=10cm]{./Figuras/gantt.png}
+\caption{Diagrama de \textit{Gantt}}
+\label{fig:Gantt}
 \end{figure}
-
-\end{consigna}
 
 \section{9. Matriz de uso de recursos de materiales}
 \label{sec:recursos}
-
 
 \begin{table}
 \label{tab:recursos}
 \centering
 \begin{tabularx}{\linewidth}{@{}|c|X|X|X|X|c|@{}}
 \hline
-\cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-6} 
-\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea\end{tabular}} & Material 1 & Material 2 & Material 3 & Material 4 \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline 
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline 
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+\cellcolor[HTML]{C0C0C0} & \cellcolor[HTML]{C0C0C0} & \multicolumn{3}{c|}{\cellcolor[HTML]{C0C0C0}Recursos requeridos (horas)} \\ \cline{3-5} 
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} & \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Nombre \\ tarea\end{tabular}} & PC & Banco de pruebas & Gateway \\ \hline
+ 1 &  Introducción & 110 & 24 &  \\ \hline
+ 2 &  Análisis y selección de RTOS & 158 & 70 &  \\ \hline
+ 3 &  Software nodo & 120 & 80 &  \\ \hline
+ 4 &  Integración & 70 & 30 & 8 \\ \hline
+ 5 &  Gestión del proyecto & 152 &  & \\ \hline
 
 \end{tabularx}%
 \end{table}
@@ -396,17 +333,6 @@ En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realiza
 
 \section{10. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
-
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
-
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
 
 \begin{table}[htpb]
 \centering
@@ -419,24 +345,13 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
- &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+ Horas de ingeniería & 
+  \multicolumn{1}{c|}{642} & 
+  \multicolumn{1}{c|}{500} & 
+  \multicolumn{1}{c|}{321000} \\ \hline
+
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{321000} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -444,22 +359,15 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Cantidad} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+\multicolumn{1}{|l|}{30 \% costos directos} &
+\multicolumn{1}{c|}{642} & 
+  \multicolumn{1}{c|}{150} & 
+  \multicolumn{1}{c|}{96300} \\ \hline
+  
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{96300} \\ \hline
 \rowcolor[HTML]{C0C0C0}
-\multicolumn{3}{|c|}{TOTAL} &
+\multicolumn{3}{|c|}{TOTAL} & 417300
    \\ \hline
 \end{tabularx}%
 \end{table}
@@ -467,8 +375,6 @@ Descripción &
 
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
-\begin{consigna}{red}
-Establecer la matriz de asignación de responsabilidades y el manejo de la autoridad completando la siguiente tabla:
 
 \begin{table}[htpb]
 \centering
@@ -478,24 +384,24 @@ Establecer la matriz de asignación de responsabilidades y el manejo de la autor
 \rowcolor[HTML]{C0C0C0} 
 \cellcolor[HTML]{C0C0C0} &
   \cellcolor[HTML]{C0C0C0} &
-  \multicolumn{4}{c|}{\cellcolor[HTML]{C0C0C0}Listar todos los nombres y roles del proyecto} \\ \cline{3-6} 
+  \multicolumn{3}{c|}{\cellcolor[HTML]{C0C0C0}Listar todos los nombres y roles del proyecto} \\ \cline{3-5} 
 \rowcolor[HTML]{C0C0C0} 
 \cellcolor[HTML]{C0C0C0} &
   \cellcolor[HTML]{C0C0C0} &
   Responsable &
   Orientador &
-  Equipo &
-  Cliente \\ \cline{3-6} 
+  Cliente \\ \cline{3-5} 
 \rowcolor[HTML]{C0C0C0} 
 \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
   \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
   \authorname &
   \supname &
-  Nombre de alguien &
   \clientename \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+ 1& Introducción & P & A & C \\ \hline
+ 2& Análisis RTOS & P & S & A \\ \hline
+ 3& Software Nodo & P & S & A \\ \hline
+ 4& Integración & P & I & A\\ \hline
+ 5& Gestión del proyecto & P & A & A \\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -510,13 +416,6 @@ Referencias:
 	\item C = Consultado
 \end{itemize}
 } %footnotesize
-
-Una de las columnas debe ser para el Director, ya que se supone que participará en el proyecto.
-A su vez se debe cuidar que no queden muchas tareas seguidas sin ``A'' o ``I''.
-
-Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
-
-\end{consigna}
 
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
