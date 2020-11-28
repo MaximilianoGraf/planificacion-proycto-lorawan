@@ -1,7 +1,7 @@
 \documentclass[11pt]{charter}
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Nodo LoRaWAN Multipropósito} 
+\titulo{Nodo LoRaWAN multipropósito} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -106,7 +106,7 @@ Se adjunta a esta acta la planificación inicial.
 \label{sec:descripcion}
 
 Debido a que el mundo de las tencologías IoT se encuentra en pleno desarrollo, desde la empresa del cliente se ha demostrado interés para contar con herramientas que permitan realizar diversos análisis de proyectos IoT como por ejemplo: tiempos de desarrollo, análisis de costos, características de las comunicaciones, consumo eléctrico, etc.
-LoRa es una tecnología inalámbrica del tipo LPWAN (Low-Power Wide Area Network) que se caracteriza por su gran alcance y su bajo consumo eléctrico. Durante 2017 INVAP realizó un proyecto utilizando LoRa, en el cuál se encontraron con diversos problemas que en esos momentos eran difíciles de resolver. 
+LoRa es una tecnología inalámbrica del tipo LPWAN (\textit{Low-Power Wide Area Network}) que se caracteriza por su gran alcance y su bajo consumo eléctrico. Durante 2017, INVAP realizó un proyecto utilizando LoRa, en el cual se encontraron con diversos problemas relacionados a la gestión de tareas concurrentes por parte de los RTOS disponibles para plataformas de bajos recursos computacionales. 
 El presente proyecto tiene como objetivo construir un prototipo que resuelva los problemas hallados anteriormente y sirva como base para futuros desarrollos IoT.
 
 En la Figura \ref{fig:arqLorawan} se puede ver como interactúa un nodo LoRaWAN con el entorno. Los nodos administran uno o varios sensores y reportan los datos hacia uno o varios gateways, estos a su vez hacen de interfaz de salida hacia la red WAN y así la información recolectada en el nodo puede llegar hasta una aplicación que haga uso de esos datos en el otro extremo de la red.
@@ -195,7 +195,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\item RN-002 Debe permitir la administración de 1 a 4 sensores en simultáneo.
 	\item RN-003 Debe enviar los datos recolectados de los sensores mediante un módem LoRa hacia un gateway utilizando un tiempo configurable para cada sensor.
 	\item RN-004 Debe recibir comandos desde el gateway.
-	\item RN-005 Debe poseer una arquitectura HAL.
+	\item RN-005 Debe poseer una arquitectura en capas e incorporar una HAL.
 	\item RN-006 Debe poder ejecutarse en al menos 2 plataformas de HW diferentes.
 	\item RN-007 Se debe utilizar control de versiones en GIT.
 	\item RN-008 Se debe desarrollar un procedimiento de integración continua utilizando las herramientas provistas por la empresa cliente.
@@ -221,9 +221,12 @@ Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
 \item Como usuario quiero tener la posibilidad de utilizar diferentes sensores en simultáneo para poder medir diferentes propiedades físicas del entorno del nodo. (5)
-\item Como analista de datos quiero visualizar información de los sensores conectados al nodo de manera remota. (3)
-\item Como usuario encargado del mantenimiento del equipo quiero conocer el estado del nodo de manera remota para realizar un diagnóstico con facilidad.        (1)
-\item Como miembro del equipo de desarrollo de software quiero cambiar fácilmente la plataforma de hardware. (8)
+\item Como analista de datos quiero disponer de una interfaz gráfica para visualizar la información proveniente de los sensores del nodo. (5)
+\item Como analista de datos quiero visualizar información de los sensores conectados al nodo de manera remota para independizarme del lugar físico en el que se realizan las mediciones. (5)
+\item Como analista de datos quiero configurar los tiempos de recolección y envío de datos de cada sensor, de ese modo se podrán obtener variaciones de las mediciones en diferentes períodos de tiempo. (3)
+\item Como usuario encargado del mantenimiento del equipo quiero conocer el estado del nodo de manera remota para realizar un diagnóstico con facilidad. (1)
+\item Como usuario encargado del mantenimiento del equipo quiero conocer el estado de la comunicación hacia el nodo de manera remota para realizar un diagnóstico con facilidad. (1)
+\item Como miembro del equipo de desarrollo de software quiero cambiar fácilmente la plataforma de hardware para realizar una portabilidad hacia nuevos desarrollos. (8)
 \end{itemize}
 
 \section{5. Entregables principales del proyecto}
@@ -253,7 +256,7 @@ Para el desarrollo del presente proyecto se supone que:
 	\item Obtener información acerca de testing en sistemas embebidos (24 hs)
 	\item Inducción a tecnologías LoRaWAN (24 hs)
 	\end{enumerate}
-\item Análisis y Selección de RTOS (158 hs)
+\item Análisis y selección de RTOS (158 hs)
 	\begin{enumerate}
 	\item Estado del arte RTOS en IoT (24 hs)
 	\item Análisis de arquitecturas multiplataforma en dispositivos IoT (40 hs)
@@ -420,29 +423,43 @@ Referencias:
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
 a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
  
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos)
+Riesgo 1: No disponer del tiempo suficiente para llevar a cabo el proyecto
 \begin{itemize}
-\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de severidad (S).
-\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-Justificar el motivo por el cual se asigna determinado número de (O). 
+\item Severidad (8): Implica que la fecha de entrega será posterior a la estimada.
+\item Probabilidad de ocurrencia (7): El responsable del proyecto posee una jornada laboral de 9 horas y se encuentra cursando la CESE, ello implica 9 horas de cursada semanales y otras 6 horas semanales para dedicarle a los trabajos solicitados por parte de la cátedra. 
 \end{itemize}   
 
-Riesgo 2:
+Riesgo 2: Mala planificación del proyecto
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (8): Implica que la fecha de entrega será posterior a la estimada.
+\item Ocurrencia (8): Generalmente la falta de experiencia en la gestión de proyectos y la subestimación de tiempos para realizar las tareas debido al conocimiento parcial con el que se cuenta al realizar la planificación hacen que este riesgo sea altamente probable.
 \end{itemize}
 
-Riesgo 3:
+Riesgo 3: Poca interacción con el cliente
 \begin{itemize}
-\item Severidad (S): 
-\item Ocurrencia (O):
+\item Severidad (6): Implica que el producto a realizar pueda ser diferente a lo esperado por el cliente, los tiempos se pueden extender debido a modificaciones en el alcance del proyecto. 
+\item Ocurrencia (8): El cliente ha demostrado bajo nivel de disponibilidad, hay una demora considerable al intentar establecer una comunicación con él. 
 \end{itemize}
 
+Riesgo 4: Viajes en fechas imprevistas
+\begin{itemize}
+\item Severidad (3): Implica retrasos en los avances del proyecto debido a que durante ese tiempo no se contará con el setup de desarrollo.
+\item Ocurrencia (4): El responsable del proyecto tiene un viaje planificado que se ha reprogramado en diversas ocasiones debido los problemas actuales a nivel global (COVID-19)
+\end{itemize}
+
+Riesgo 5: Retrasos para conseguir hardware
+\begin{itemize}
+\item Severidad (2): Implica retrasos en los avances del proyecto debido a que durante ese tiempo no se contará con el setup de desarrollo.
+\item Ocurrencia (8): Los componentes necesarios para el armado del banco de pruebas se encuentran en la ciudad de Córdoba. Es altamente probable que se demoren los envíos.
+\end{itemize}
+
+Riesgo 6: Aislamiento COVID-19
+\begin{itemize}
+\item Severidad (5): Implica retrasos en los avances del proyecto debido a que durante ese tiempo no se contará con el setup de desarrollo.
+\item Ocurrencia (7): Los rebrotes actuales en diferentes lugares del mundo, dan a entender que el año 2021 podríamos tener cuarentena estricta nuevamente.
+\end{itemize}
 
 b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 
@@ -452,34 +469,46 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+   No disponer del tiempo suficiente para llevar a cabo el proyecto    &  8 &  7 &  56   &  8  &  3  &  24    \\ \hline
+   Mala planificación del proyecto    &  8 &  8 &  64   &  6  &  3  &  18    \\ \hline
+   Poca interacción con el cliente    &  6 &  8 &  48   &  3  &  8  &  24    \\ \hline
+   Viajes en fechas imprevistas    &  3 &  4 &  12   &    &    &      \\ \hline
+   Retrasos para conseguir hardware    &  2 &  8 &  16   &    &    &      \\ \hline
+   Aislamiento COVID-19    &  5 &  7 &  35   &  4  &  7  &  28    \\ \hline
 \end{tabularx}%
 \end{table}
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 30
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
+\textbf{Riesgo 1: } El plan de mitigación consiste en gestionar una cantidad de horas dentro de la jornada de trabajo. El proyecto se realizará para la empresa en la que el principal responsable de llevarlo a cabo trabaja actualmente.
+  
+  - Severidad (8): La severidad se mantiene.
+  
+  - Probabilidad de ocurrencia (3): Disminuye la probabilidad de ocurrencia debido a que se dipondrá de una cantidad de horas mayor.
 
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+\textbf{Riesgo 2: } El plan de mitigación consiste en involucrar a los directores en el armado de la planificación.
+  
+  - Severidad (8): La severidad se mantiene.
+  
+  - Probabilidad de ocurrencia (3): Al contar con la colaboración de gente experimentada en gestión de proyectos, la probabilidad de ocurrencia disminuye.
+
  
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+\textbf{Riesgo 3: } El plan de mitigación consiste en consensuar con el cliente un alcance claro del proyecto, se requiere un feedback de la especificación de requeriemientos.
+  
+  - Severidad (3): Al tener el alcance claro, la severidad de tener poca comunicación es menor.
+  
+  - Probabilidad de ocurrencia (8): La probabilidad de ocurrencia se mantiene.
 
-\end{consigna}
-
+\textbf{Riesgo 6: } El plan de mitigación consiste en utilizar la mayor cantidad de recursos posibles para trabajar de manera remota.
+  
+  - Severidad (4): Al poder trabajar de manera remota, la severidad de tener poca comunicación es menor, el valor es 4 porque algunas tareas no se van a poder realizar de manera remota.
+  
+  - Probabilidad de ocurrencia (7): La probabilidad de ocurrencia se mantiene.
 
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
@@ -526,11 +555,7 @@ El plan de comunicación del proyecto es el siguiente:
 \section{15. Gestión de compras}
 \label{sec:compras}
 
-\begin{consigna}{red}
-En caso de tener que comprar elementos o contratar servicios:
-a) Explique con qué criterios elegiría a un proveedor.
-b) Redacte el Statement of Work correspondiente.
-\end{consigna}
+Éste proyecto no requiere la compra de componentes dado que se los materiales ya están disponibles en la empresa cliente.
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
