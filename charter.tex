@@ -17,11 +17,11 @@
 \director{Ing. Julieta Llanes}
 \pertenenciaDirector{INVAP S.E.} 
 % FIXME:NO IMPLEMENTADO EL CODIRECTOR ni su pertenencia
-\codirector{} % si queda vacio no se deberíá incluir 
-\pertenenciaCoDirector{}
+\codirector{Ing. Javier Cerrada} % si queda vacio no se deberíá incluir 
+\pertenenciaCoDirector{INVAP S.E.}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Ing. Javier Cerrada}
+\cliente{Ing. Gastón Ramos}
 \empresaCliente{INVAP S.E.}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
@@ -65,6 +65,8 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.0      & Creación del documento                                          & 07/11/2020 \\ \hline
 1.1      & Actualización de requerimientos y correcciones en las secciones 1 a 6. Se agregan historias de usuario. & 15/11/2020 \\ \hline
 1.2      & Se completa hasta la sección 11 inclusive.                      & 22/11/2020 \\ \hline
+1.3      & Se completa hasta la sección 17 inclusive. Se modifica numeración en tareas del wbs, se realizan correcciones sugeridas en la segunda revisión. Se modifican los datos del cliente y codirector                & 29/11/2020 \\ \hline
+1.4      & Se incorporan correcciones sugeridas en la última entrega    & 03/12/2020 \\ \hline
 
 \end{tabularx}
 \end{table}
@@ -120,9 +122,7 @@ En la Figura \ref{fig:arqLorawan} se puede ver como interactúa un nodo LoRaWAN 
 \label{fig:arqLorawan}
 \end{figure}
 
-\vspace{25px}
-
-
+\vspace{20px}
 
 
 \section{Identificación y análisis de los interesados}
@@ -138,13 +138,16 @@ Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
 Cliente       & \clientename      &\empclientename	& -      	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director	Trabajo final \\ \hline
+Orientador    & \cosupname	      & \pertesupname 	& Codirector	Trabajo final \\ \hline
 Usuario final & Equipo de desarrollo de SW &INVAP S.E. & -        	\\ \hline
 \end{tabularx}
 \end{table}
 
+
 \begin{itemize}
-\item Cliente: es riguroso y exigente con la arquitecuta a desarrollar. Se recomienda hacer varias interconsultas para formalizar avances.
-\item Orientador: Julieta Llanes, dispone de muy poco tiempo, usar las reuniones de manera eficiente.
+\item Cliente: Está principalmente interesado en la arquitectura del firmware a desarrollar. Informar acerca de avances relevantes.
+\item Orientador: Julieta Llanes, dispone de muy poco tiempo, usar las reuniones de manera eficiente, informar avances.
+\item Orientador: Javier Cerrada, tiene muy buena predisposición y experiencia en sistemas embebidos, realizar consultas técnicas e informar avances.
 \end{itemize}
 
 
@@ -194,12 +197,12 @@ Para el desarrollo del presente proyecto se supone que:
 	\item RN-001 Debe implementarse sobre un RTOS.
 	\item RN-002 Debe permitir la administración de 1 a 4 sensores en simultáneo.
 	\item RN-003 Debe enviar los datos recolectados de los sensores mediante un módem LoRa hacia un gateway utilizando un tiempo configurable para cada sensor.
-	\item RN-004 Debe recibir comandos desde el gateway.
-	\item RN-005 Debe poseer una arquitectura en capas e incorporar una HAL.
-	\item RN-006 Debe poder ejecutarse en al menos 2 plataformas de HW diferentes.
-	\item RN-007 Se debe utilizar control de versiones en GIT.
-	\item RN-008 Se debe desarrollar un procedimiento de integración continua utilizando las herramientas provistas por la empresa cliente.
-	\item RN-009 Debe poseer una arquitectura en capas.
+	\item RN-004 Debe recibir comandos mediante LoRa.	
+	\item RN-005 Debe poder ejecutarse en al menos 2 plataformas de HW diferentes.
+	\item RN-006 Se debe utilizar control de versiones en GIT.
+	\item RN-007 Se debe desarrollar un procedimiento de integración continua utilizando las herramientas actuales de la empresa cliente.
+	\item RN-008 Debe poseer una arquitectura en capas.
+	\item RN-009 Debe incorporar una HAL.
 	\item RN-010 Debe enviar información de estado.
 	\end{enumerate}
 \item Aplicación de usuario
@@ -217,7 +220,7 @@ Para el desarrollo del presente proyecto se supone que:
 \section{Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-Éstas historias fueron ponderadas según el volumen de trabajo y dificultad que implica satisfacer cada una de ellas utilizando la serie de Fibonacci.
+Estas historias fueron ponderadas según el volumen de trabajo y dificultad que implica satisfacer cada una de ellas utilizando la serie de Fibonacci.
 
 \begin{itemize}
 \item Como usuario quiero tener la posibilidad de utilizar diferentes sensores en simultáneo para poder medir diferentes propiedades físicas del entorno del nodo. (5)
@@ -248,13 +251,13 @@ Para el desarrollo del presente proyecto se supone que:
 \item Introducción (134 hs)
 	\begin{enumerate}
 	\item Obtener información acerca de proyectos similares en la empresa y buscar referentes (12 hs)
+	\item Inducción a tecnologías LoRaWAN (24 hs)
+	\item Obtener requerimientos iniciales (10 hs)
 	\item Gestionar envíos y compras de elementos necesarios (10 hs)
 	\item Analizar documentación de las plataformas de HW a utilizar (15 hs)
-	\item Obtener requerimientos iniciales (10 hs)
 	\item Planificación del proyecto (15 hs)
 	\item Armado de banco de pruebas (24 hs)
 	\item Obtener información acerca de testing en sistemas embebidos (24 hs)
-	\item Inducción a tecnologías LoRaWAN (24 hs)
 	\end{enumerate}
 \item Análisis y selección de RTOS (158 hs)
 	\begin{enumerate}
@@ -305,7 +308,7 @@ El camino crítico se representa en color naranja.
 \section{8. Diagrama de Gantt}
 \label{sec:gantt}
 
-El diagrama de Gantt del proyecto se presenta en la Figura \ref{fig:Gantt}. En el mismo se pueden apreciar las fechas de inicio y finalización de cada tarea, así como también sus dependencias.
+El diagrama de Gantt del proyecto se presenta en la Figura \ref{fig:Gantt}, donde se pueden apreciar las fechas de inicio y finalización de cada tarea, así como también sus dependencias.
 
 \begin{figure}[htpb]
 \centering 
@@ -332,7 +335,7 @@ El diagrama de Gantt del proyecto se presenta en la Figura \ref{fig:Gantt}. En e
 
 \end{tabularx}%
 \end{table}
-
+\pagebreak
 
 \section{10. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
@@ -352,9 +355,13 @@ Descripción &
   \multicolumn{1}{c|}{642} & 
   \multicolumn{1}{c|}{500} & 
   \multicolumn{1}{c|}{321000} \\ \hline
-
+ Hardware a utilizar & 
+  \multicolumn{1}{c|}{1} & 
+  \multicolumn{1}{c|}{200000} & 
+  \multicolumn{1}{c|}{200000} \\ \hline
+  
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{321000} \\ \hline
+  \multicolumn{1}{c|}{521000} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -363,14 +370,14 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
 \multicolumn{1}{|l|}{30 \% costos directos} &
-\multicolumn{1}{c|}{642} & 
-  \multicolumn{1}{c|}{150} & 
-  \multicolumn{1}{c|}{96300} \\ \hline
+\multicolumn{1}{c|}{1} & 
+  \multicolumn{1}{c|}{156300} & 
+  \multicolumn{1}{c|}{156300} \\ \hline
   
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{96300} \\ \hline
+  \multicolumn{1}{c|}{156300} \\ \hline
 \rowcolor[HTML]{C0C0C0}
-\multicolumn{3}{|c|}{TOTAL} & 417300
+\multicolumn{3}{|c|}{TOTAL} & 677300
    \\ \hline
 \end{tabularx}%
 \end{table}
@@ -382,7 +389,7 @@ Descripción &
 \begin{table}[htpb]
 \centering
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|c|c|c|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \cellcolor[HTML]{C0C0C0} &
@@ -395,16 +402,34 @@ Descripción &
   Orientador &
   Cliente \\ \cline{3-5} 
 \rowcolor[HTML]{C0C0C0} 
-\multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
-  \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
+\multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
+  \multirow{-2}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
   \authorname &
   \supname &
   \clientename \\ \hline
- 1& Introducción & P & A & C \\ \hline
- 2& Análisis RTOS & P & S & A \\ \hline
- 3& Software Nodo & P & S & A \\ \hline
- 4& Integración & P & I & A\\ \hline
- 5& Gestión del proyecto & P & A & A \\ \hline
+ 1.1& \shortstack{Obtener información acerca de proyectos \\ similares en la empresa y buscar referentes} & P & A & C \\ \hline
+ 1.2& \shortstack{Inducción a tecnologías LoRaWAN} & P & C & I \\ \hline
+ 1.3& \shortstack{Obtener requerimientos iniciales} & P & A & C \\ \hline
+ 1.4& \shortstack{Gestionar envíos y compras de elementos\\ necesarios} & P & I & C \\ \hline
+ 1.5& \shortstack{Analizar documentación de las plataformas\\ de HW a utilizar} & P & I & I \\ \hline
+ 1.6& \shortstack{Planificación del proyecto} & P & A & I \\ \hline
+ 1.7& \shortstack{Armado de banco de pruebas} & P & C & I \\ \hline
+ 1.8& \shortstack{Obtener información acerca de testing\\ en sistemas embebidos} & P & I & I \\ \hline
+ 2.1& \shortstack{Estado del arte RTOS en IoT} & P & C & I \\ \hline
+ 2.2& \shortstack{Análisis de arquitecturas multiplataforma\\ en dispositivos IoT} & P & S & I \\ \hline
+ 2.3& \shortstack{Instalación de SDK} & P & I & I \\ \hline
+ 2.4& \shortstack{Diseño e implementación de pruebas de \\performance} & P & A & C \\ \hline
+ 2.5& \shortstack{Ejecución de pruebas en 3 plataformas y \\análisis de resultados} & P & S & A \\ \hline
+ 3.1& \shortstack{Diseño} & P & C & I \\ \hline
+ 3.2& \shortstack{Implementación} & P & S & I \\ \hline
+ 3.3& \shortstack{Testing} & P & I & I \\ \hline
+ 4.1& \shortstack{Configuración gateway} & P & I & I\\ \hline
+ 4.2& \shortstack{Diseño e implementación aplicación de \\usuario} & P & I & C\\ \hline
+ 4.3& \shortstack{Testing y pruebas end to end} & P & S & A\\ \hline
+ 5.1& \shortstack{Reuniones de control y seguimiento \\del proyecto} & P & C & C \\ \hline
+ 5.2& \shortstack{Elaboración de documentos para el cliente} & P & S & A \\ \hline
+ 5.3& \shortstack{Elaboración de Memorias del proyecto} & P & I & I \\ \hline 
+ 5.4& \shortstack{Elaboración de presentación final\\ del proyecto} & P & A & A \\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -423,45 +448,45 @@ Referencias:
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
 
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
+a) Identificación de los riesgos y estimación de sus consecuencias:
  
 Riesgo 1: No disponer del tiempo suficiente para llevar a cabo el proyecto
 \begin{itemize}
-\item Severidad (8): Implica que la fecha de entrega será posterior a la estimada.
-\item Probabilidad de ocurrencia (7): El responsable del proyecto posee una jornada laboral de 9 horas y se encuentra cursando la CESE, ello implica 9 horas de cursada semanales y otras 6 horas semanales para dedicarle a los trabajos solicitados por parte de la cátedra. 
+\item Severidad (8): implica que la fecha de entrega será posterior a la estimada.
+\item Probabilidad de ocurrencia (7): el responsable del proyecto posee una jornada laboral de 9 horas y se encuentra cursando la CESE, ello implica 9 horas de cursada semanales y otras 6 horas semanales para dedicarle a los trabajos solicitados por parte de la cátedra. 
 \end{itemize}   
 
 Riesgo 2: Mala planificación del proyecto
 \begin{itemize}
-\item Severidad (8): Implica que la fecha de entrega será posterior a la estimada.
-\item Ocurrencia (8): Generalmente la falta de experiencia en la gestión de proyectos y la subestimación de tiempos para realizar las tareas debido al conocimiento parcial con el que se cuenta al realizar la planificación hacen que este riesgo sea altamente probable.
+\item Severidad (8): implica que la fecha de entrega será posterior a la estimada.
+\item Ocurrencia (8): generalmente la falta de experiencia en la gestión de proyectos y la subestimación de tiempos para realizar las tareas debido al conocimiento parcial con el que se cuenta al realizar la planificación hacen que este riesgo sea altamente probable.
 \end{itemize}
 
 Riesgo 3: Poca interacción con el cliente
 \begin{itemize}
-\item Severidad (6): Implica que el producto a realizar pueda ser diferente a lo esperado por el cliente, los tiempos se pueden extender debido a modificaciones en el alcance del proyecto. 
-\item Ocurrencia (8): El cliente ha demostrado bajo nivel de disponibilidad, hay una demora considerable al intentar establecer una comunicación con él. 
+\item Severidad (6): implica que el producto a realizar pueda ser diferente a lo esperado por el cliente, los tiempos se pueden extender debido a modificaciones en el alcance del proyecto. 
+\item Ocurrencia (8): el cliente ha demostrado bajo nivel de disponibilidad, hay una demora considerable al intentar establecer una comunicación con él. 
 \end{itemize}
 
 Riesgo 4: Viajes en fechas imprevistas
 \begin{itemize}
-\item Severidad (3): Implica retrasos en los avances del proyecto debido a que durante ese tiempo no se contará con el setup de desarrollo.
-\item Ocurrencia (4): El responsable del proyecto tiene un viaje planificado que se ha reprogramado en diversas ocasiones debido los problemas actuales a nivel global (COVID-19)
+\item Severidad (5): implica retrasos en los avances del proyecto debido a que durante ese tiempo no se contará con el setup de desarrollo.
+\item Ocurrencia (4): el responsable del proyecto tiene un viaje planificado que se ha reprogramado en diversas ocasiones debido los problemas actuales a nivel global (COVID-19)
 \end{itemize}
 
 Riesgo 5: Retrasos para conseguir hardware
 \begin{itemize}
-\item Severidad (2): Implica retrasos en los avances del proyecto debido a que durante ese tiempo no se contará con el setup de desarrollo.
-\item Ocurrencia (8): Los componentes necesarios para el armado del banco de pruebas se encuentran en la ciudad de Córdoba. Es altamente probable que se demoren los envíos.
+\item Severidad (2): implica retrasos en los avances del proyecto debido a que durante ese tiempo no se contará con el setup de desarrollo.
+\item Ocurrencia (8): los componentes necesarios para el armado del banco de pruebas se encuentran en la ciudad de Córdoba. Es altamente probable que se demoren los envíos.
 \end{itemize}
 
-Riesgo 6: Aislamiento COVID-19
+Riesgo 6: aislamiento COVID-19
 \begin{itemize}
-\item Severidad (5): Implica retrasos en los avances del proyecto debido a que durante ese tiempo no se contará con el setup de desarrollo.
-\item Ocurrencia (7): Los rebrotes actuales en diferentes lugares del mundo, dan a entender que el año 2021 podríamos tener cuarentena estricta nuevamente.
+\item Severidad (5): implica retrasos en los avances del proyecto debido a que durante ese tiempo no se contará con el setup de desarrollo.
+\item Ocurrencia (7): los rebrotes actuales en diferentes lugares del mundo, dan a entender que el año 2021 podríamos tener cuarentena estricta nuevamente.
 \end{itemize}
 
-b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
+b) Tabla de gestión de riesgos:
 
 \begin{table}[htpb]
 \centering
@@ -479,57 +504,153 @@ Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
 \end{table}
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 30
+se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 30
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-\textbf{Riesgo 1: } El plan de mitigación consiste en gestionar una cantidad de horas dentro de la jornada de trabajo. El proyecto se realizará para la empresa en la que el principal responsable de llevarlo a cabo trabaja actualmente.
+\textbf{Riesgo 1: } el plan de mitigación consiste en gestionar una cantidad de horas dentro de la jornada de trabajo. El proyecto se realizará para la empresa en la que el principal responsable de llevarlo a cabo trabaja actualmente.
   
-  - Severidad (8): La severidad se mantiene.
+  - Severidad (8): la severidad se mantiene.
   
-  - Probabilidad de ocurrencia (3): Disminuye la probabilidad de ocurrencia debido a que se dipondrá de una cantidad de horas mayor.
+  - Probabilidad de ocurrencia (3): disminuye la probabilidad de ocurrencia debido a que se dipondrá de una cantidad de horas mayor.
 
-\textbf{Riesgo 2: } El plan de mitigación consiste en involucrar a los directores en el armado de la planificación.
+\textbf{Riesgo 2: } el plan de mitigación consiste en involucrar a los directores en el armado de la planificación.
   
-  - Severidad (8): La severidad se mantiene.
+  - Severidad (8): la severidad se mantiene.
   
-  - Probabilidad de ocurrencia (3): Al contar con la colaboración de gente experimentada en gestión de proyectos, la probabilidad de ocurrencia disminuye.
+  - Probabilidad de ocurrencia (3): al contar con la colaboración de gente experimentada en gestión de proyectos, la probabilidad de ocurrencia disminuye.
 
  
-\textbf{Riesgo 3: } El plan de mitigación consiste en consensuar con el cliente un alcance claro del proyecto, se requiere un feedback de la especificación de requeriemientos.
+\textbf{Riesgo 3: } el plan de mitigación consiste en consensuar con el cliente un alcance claro del proyecto, se requiere un feedback de la especificación de requeriemientos.
   
-  - Severidad (3): Al tener el alcance claro, la severidad de tener poca comunicación es menor.
+  - Severidad (3): al tener el alcance claro, la severidad de tener poca comunicación es menor.
   
-  - Probabilidad de ocurrencia (8): La probabilidad de ocurrencia se mantiene.
+  - Probabilidad de ocurrencia (8): la probabilidad de ocurrencia se mantiene.
 
-\textbf{Riesgo 6: } El plan de mitigación consiste en utilizar la mayor cantidad de recursos posibles para trabajar de manera remota.
+\textbf{Riesgo 6: } el plan de mitigación consiste en utilizar la mayor cantidad de recursos posibles para trabajar de manera remota.
   
-  - Severidad (4): Al poder trabajar de manera remota, la severidad de tener poca comunicación es menor, el valor es 4 porque algunas tareas no se van a poder realizar de manera remota.
+  - Severidad (4): al poder trabajar de manera remota, la severidad de tener poca comunicación es menor, el valor es 4 porque algunas tareas no se van a poder realizar de manera remota.
   
-  - Probabilidad de ocurrencia (7): La probabilidad de ocurrencia se mantiene.
+  - Probabilidad de ocurrencia (7): la probabilidad de ocurrencia se mantiene.
 
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Para cada uno de los requerimientos del proyecto indique:
 \begin{itemize} 
-\item Req \#1: copiar acá el requerimiento.
-
-Verificación y validación:
-
+\item Req RN-001: debe implementarse sobre un RTOS.
 \begin{itemize}
-\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar 
-\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar  
+\item Verificación: mediante inspección de código y/o documento de arquitectura. 
+\item Validación: se elaborará un informe con la comparativa de RTOS candidatos y se detallarán los motivos de la elección realizada.  
+\end{itemize}
 \end{itemize}
 
+\begin{itemize} 
+\item Req RN-002: debe permitir la administración de 1 a 4 sensores en simultáneo.
+\begin{itemize}
+\item Verificación: se comprobará mediante documentación y diagramas esquemáticos. 
+\item Validación: se exhibirá una demostración del funcionamiento del prototipo luego de la etapa de integración.  
+\end{itemize}
 \end{itemize}
 
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.
+\begin{itemize} 
+\item Req RN-003: debe enviar los datos recolectados de los sensores mediante un módem LoRa hacia un gateway utilizando un tiempo configurable para cada sensor.
+\begin{itemize}
+\item Verificación: mediante inspección de código y/o documento de arquitectura. 
+\item Validación: se exhibirá una demostración del funcionamiento del prototipo luego de la etapa de integración.  
+\end{itemize}
+\end{itemize}
 
-\end{consigna}
+\begin{itemize} 
+\item Req RN-004: debe recibir comandos mediante LoRa.
+\begin{itemize}
+\item Verificación: se comprobará mediante documentación del transceiver utilizado. 
+\item Validación: se exhibirá una demostración del funcionamiento del prototipo luego de la etapa de integración.  
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RN-005: debe poder ejecutarse en al menos 2 plataformas de HW diferentes.
+\begin{itemize}
+\item Verificación: se comprobará mediante documentación de cada plataforma utilizada. 
+\item Validación: se exhibirá una demostración del funcionamiento del prototipo luego de la etapa de integración.  
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RN-006: se debe utilizar control de versiones en GIT.
+\begin{itemize}
+\item Verificación: se comprobará mediante documento de instalación de ambiente de desarrollo. 
+\item Validación: se verificará mediante los entregables al cliente.  
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RN-007: se debe desarrollar un procedimiento de integración continua utilizando las herramientas actuales de la empresa cliente.
+\begin{itemize}
+\item Verificación: N/A 
+\item Validación: se verificará mediante los entregables al cliente y/o demostración de la funcionalidad. 
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RN-008: debe poseer una arquitectura en capas.
+\begin{itemize}
+\item Verificación: mediante inspección de código y/o documento de arquitectura.
+\item Validación: se verificará mediante los entregables al cliente y/o demostración de la funcionalidad.   
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RN-009: debe incorporar una HAL.
+\begin{itemize}
+\item Verificación: mediante inspección de código y/o documento de arquitectura.
+\item Validación: se verificará mediante los entregables al cliente y/o demostración de la funcionalidad.  
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RN-010: debe enviar información de estado.
+\begin{itemize}
+\item Verificación: mediante inspección de código y/o documento de arquitectura.
+\item Validación: se exhibirá una demostración del funcionamiento del prototipo luego de la etapa de integración.  
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RA-001: debe recibir los mensajes provenientes del gateway.
+\begin{itemize}
+\item Verificación: se comprobará el diseño del software de visualización. 
+\item Validación: se exhibirá una demostración del funcionamiento del prototipo luego de la etapa de integración.  
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RA-002: debe permitir el envío de comandos hacia el nodo.
+\begin{itemize}
+\item Verificación: se comprobará el diseño del software de visualización. 
+\item Validación: se exhibirá una demostración del funcionamiento del prototipo luego de la etapa de integración.  
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RA-003: debe permitir la visualización de los mensajes recibidos.
+\begin{itemize}
+\item Verificación: se comprobará el diseño del software de visualización.
+\item Validación: se exhibirá una demostración del funcionamiento del prototipo luego de la etapa de integración.  
+\end{itemize}
+\end{itemize}
+
+\begin{itemize} 
+\item Req RD-001: la documentación debe ser generada con las herramientas de gestión de la empresa cliente.
+\begin{itemize}
+\item Verificación: se comprobará mediante documentación del transceiver utilizado. 
+\item Validación: se comprobará mediante los entregables al cliente.
+\end{itemize}
+\end{itemize}
+
+
 
 \section{14. Comunicación del proyecto}
 \label{sec:comunicaciones}
@@ -538,42 +659,29 @@ El plan de comunicación del proyecto es el siguiente:
 
 \begin{table}[htpb]
 \centering
-\begin{tabularx}{\linewidth}{@{}|X|C{2.4cm}|C{3cm}|C{1.8cm}|C{2cm}|C{2.1cm}|@{}}
+\begin{tabularx}{\linewidth}{@{}|C{2.3cm}|C{2.3cm}|C{2.5cm}|C{1.8cm}|C{2.3cm}|C{2.1cm}|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}PLAN DE COMUNICACIÓN DEL PROYECTO}           \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 ¿Qué comunicar? & Audiencia & Propósito & Frecuencia & Método de comunicac. & Responsable \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
-                &           &           &            &                      &             \\ \hline
+Definición de objetivos y alcances                &  Directores, cliente         &    Consensuar alcance del proyecto       &     Inicio del proyecto   & e-mails, reunión virtual    & Maximiliano Graf			  \\ \hline
+Consultas técnicas   &   Directores, colaboradores    &     Aclaración de dudas      &     Bajo demanda     &     Reunión virtual, e-mails                 & Maximiliano Graf            \\ \hline
+Informe de avances          &    Directores       &   Informativo   &    Mensual     &         Reunión virtual             & Maximiliano Graf            \\ \hline
+Demostración funcional   &    Directores, cliente       &   Informativo        &    Al finalizar integración        &     Reunión virtual         & Maximiliano Graf            \\ \hline
+Cierre del proyecto         &    Directores, cliente       &    Evaluar y finalizar el proyecto     &    Al finalizar el proyecto    &   Reunión virtual                   & Maximiliano Graf            \\ \hline
 \end{tabularx}
 \end{table}
 
 \section{15. Gestión de compras}
 \label{sec:compras}
 
-Éste proyecto no requiere la compra de componentes dado que se los materiales ya están disponibles en la empresa cliente.
+Este proyecto no requiere la compra de componentes dado que se los materiales ya están disponibles en la empresa cliente.
 
 \section{16. Seguimiento y control}
 \label{sec:seguimiento}
 
-\begin{consigna}{red}
-Para cada tarea del proyecto establecer la frecuencia y los indicadores con los se seguirá su avance y quién será el responsable de hacer dicho seguimiento y a quién debe comunicarse la situación (en concordancia con el Plan de Comunicación del proyecto).
-
-El indicador de avance tiene que ser algo medible, mejor incluso si se puede medir en \% de avance. Por ejemplo,se pueden indicar en esta columna cosas como ``cantidad de conexiones ruteadeas'' o ``cantidad de funciones implementadas'', pero no algo genérico y ambiguo como ``\%'', porque el lector no sabe porcentaje de qué cosa.
-
-\end{consigna}
-
 \begin{longtable}{|m{1cm}|m{3.5cm}|m{2.2cm}|m{2cm}|m{3cm}|m{1.5cm}|}
-\hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-Tarea del WBS 			& Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
-\endfirsthead
 
 \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -582,50 +690,74 @@ Tarea del WBS 			& Indicador de avance & Frecuencia de reporte & Resp. de seguim
 Tarea del WBS 			& Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
 \endhead
 
-\multicolumn{6}{c}{Continúa}
 \endfoot
 
 \endlastfoot
 
-1.1	& Fecha de inicio  & Única vez al comienzo & \authorname & \clientename, \supname & email \\ \hline
-2.1	& Avance de las subtareas  & Mensual mientras dure la tarea & \authorname & \clientename, \supname & email \\ \hline
+1.1	& Relevamiento de proyectos LoRa y referentes  & Única vez al comienzo & \authorname & \supname & email, reunión virtual \\ \hline
+1.2	& Viabilidad de concreción del proyecto  & Única vez al finalizar la tarea & \authorname & \supname & email \\ \hline
+1.3	& Requerimientos iniciales  & Al alcanzar el 80 \% de avance de la tarea & \authorname & \clientename, \supname & email \\ \hline
+1.4	& Estado de selección y envío de componentes  & Semanal mientras dure la tarea & \authorname & \clientename, \supname & email \\ \hline
+1.5	& Selección de plataformas de HW  & Única vez al finalizar la tarea & \authorname & \supname & email \\ \hline
+1.6	& Listado de tareas  & Al alcanzar el 80 \% de avance de la tarea & \authorname & \clientename, \supname & email, reunión virtual \\ \hline
+1.7	& Progreso de armado del banco de desarrollo y pruebas  & Única vez al finalizar la tarea & \authorname & \supname & email \\ \hline
+1.8	& Propuesta de metodología de testing a utilizar  & Única vez al finalizar la tarea & \authorname & \supname & email \\ \hline
+
+2.1	& Se informarán los RTOS candidatos  & Única vez al finalizar la tarea & \authorname & \supname & email \\ \hline
+2.2	& Interconsultas técnicas & A demanda mientras dure la tarea & \authorname & \supname & email, reunión virtual \\ \hline
+2.3	& Interconsultas técnicas & A demanda mientras dure la tarea & \authorname & \supname & email \\ \hline
+2.4	& Interconsultas técnicas & A demanda mientras dure la tarea & \authorname & \supname & email \\ \hline
+2.5	& Resultado de ejecución de las pruebas  & Única vez al finalizar la tarea & \authorname & \clientename, \supname & email \\ \hline
+3.1	& Interconsultas técnicas  & Semanal mientras dure la tarea & \authorname & \supname & email \\ \hline
+3.2 & Interconsultas técnicas  & Semanal mientras dure la tarea & \authorname & \supname & email \\ \hline
+3.3	& Información acerca del testing realizado & Única vez al finalizar la tarea & \authorname & \supname & email \\ \hline
+4.1	& Comunicar configuración escogida  & Una vez al finalizar la tarea & \authorname & \supname & email \\ \hline
+4.2	& Interconsultas técnicas  & Semanalmente mientras dure la tarea & \authorname & \clientename, \supname & email \\ \hline
+4.3	& Resultados de pruebas end to end, demostración funcional & Única vez al finalizar la tarea & \authorname & \clientename, \supname & email \\ \hline
+5.1	& Avance de las subtareas  & Mensual mientras dure la tarea & \authorname & \supname & email \\ \hline
+5.2	& Revisiones de documentación  & Semanal mientras dure la tarea & \authorname & \clientename, \supname & email \\ \hline
+5.3	& Entrega de memorias  & Única vez al finalizar la tarea  & \authorname & \clientename, \supname & email \\ \hline
+5.4	& Entrega de la presentación  & Única vez al finalizar la tarea  & \authorname & \clientename, \supname & email, reunión virtual \\ \hline
 
 \end{longtable}
-
-\begin{table}[!htpb]
-\centering
-%\begin{tabularx}{\linewidth}{@{}|X|X|X|X|X|X|@{}}
-\begin{tabularx}{\linewidth}{@{}|X|C{2.5cm}|C{3cm}|C{2cm}|C{2cm}|C{2.5cm}|@{}}
-\hline
-\rowcolor[HTML]{C0C0C0} 
-\multicolumn{6}{|c|}{\cellcolor[HTML]{C0C0C0}SEGUIMIENTO DE AVANCE}                                                                       \\ \hline
-\rowcolor[HTML]{C0C0C0} 
-Tarea del WBS & Indicador de avance & Frecuencia de reporte & Resp. de seguimiento & Persona a ser informada & Método de comunic. \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
-\end{tabularx}%
-%}
-\end{table}
 
 \section{17. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
-
 \begin{itemize}
 \item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron:
- - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-  - Indicar esto y quién financiará los gastos correspondientes.
+
+ - Persona a cargo: Maximiliano Graf.
+ 
+ - Procedimiento:
+ \begin{itemize}
+ \item[•] Se revisará el cumplimiento de todos los requerimientos y con esto evaluar la calidad del proyecto.
+ \item[•] Se analizará si la asignación de tiempos para las tareas fue correcta y si se respetó.
+ \item[•] Se evaluará que riesgos hubo y la efectividad del plan de mitigación.
+ \end{itemize}
+
+\item Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, los problemas que surgieron, y cómo se solucionaron:
+
+ - Persona a cargo: Maximiliano Graf.
+ 
+ - Procedimiento:
+ \begin{itemize}
+ \item[•] Se analizarán los problemas ocurridos y la forma en que se les dio solución.
+ \item[•] Se evaluará si el diseño de software fue correcto.
+ \item[•] Se realizará un análisis de posibles mejoras tanto en los procedimientos utilizados como en diseños e implementaciones, para tener en cuenta en proyectos futuros o en una continuación del mismo.
+  
+ \end{itemize}
+ 
+ \item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
+ 
+ - Persona a cargo: Maximiliano Graf.
+ 
+ - Procedimiento:
+ \begin{itemize}
+ \item[•] Una vez finalizado el proyecto se realizará un agradecimiento formal al director, colaboradores, docentes
+y autoridades de la Carrera de Especialización en Sistemas Embebidos.
+ \end{itemize}
+ 
 \end{itemize}
-
-\end{consigna}
-
 
 \end{document}
